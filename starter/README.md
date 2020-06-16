@@ -91,7 +91,124 @@ We have different endpoints in this project I will mention some of them  accordi
     "6": "Sports"
   },
   "success": true:
+}
 
+```
+#### GET /questions
+
+**In general** Returns a list questions, list of categories and total number of questions. And the Results are paginated in groups of 10.
+
+**Sample:** `curl http://127.0.0.1:5000/questions`
+
+
+```bash
+{
+  "categories": {
+    "1": "Science",
+    "2": "Art",
+    "3": "Geography",
+    "4": "History",
+    "5": "Entertainment",
+    "6": "Sports"
+  },
+  "questions": [
+    {
+      "answer": "Edward Scissorhands",
+      "category": 5,
+      "difficulty": 3,
+      "id": 6,
+      "question": "What was the title of the 1990 fantasy directed by Tim Burton about a young man with multi-bladed appendages?"
+    },
+    {
+      "answer": "Muhammad Ali",
+      "category": 4,
+      "difficulty": 1,
+      "id": 9,
+      "question": "What boxer's original name is Cassius Clay?"
+    },
+    {
+      "answer": "Brazil",
+      "category": 6,
+      "difficulty": 3,
+      "id": 10,
+      "question": "Which is the only team to play in every soccer World Cup tournament?"
+    },
+    {
+      "answer": "Uruguay",
+      "category": 6,
+      "difficulty": 4,
+      "id": 11,
+      "question": "Which country won the first ever soccer World Cup in 1930?"
+    },
+    {
+      "answer": "George Washington Carver",
+      "category": 4,
+      "difficulty": 2,
+      "id": 12,
+      "question": "Who invented Peanut Butter?"
+    },
+    {
+      "answer": "Lake Victoria",
+      "category": 3,
+      "difficulty": 2,
+      "id": 13,
+      "question": "What is the largest lake in Africa?"
+    },
+    {
+      "answer": "The Palace of Versailles",
+      "category": 3,
+      "difficulty": 3,
+      "id": 14,
+      "question": "In which royal palace would you find the Hall of Mirrors?"
+    },
+    {
+      "answer": "Agra",
+      "category": 3,
+      "difficulty": 2,
+      "id": 15,
+      "question": "The Taj Mahal is located in which Indian city?"
+    },
+    {
+      "answer": "Escher",
+      "category": 2,
+      "difficulty": 1,
+      "id": 16,
+      "question": "Which Dutch graphic artist–initials M C was a creator of optical illusions?"
+    },
+    {
+      "answer": "Mona Lisa",
+      "category": 2,
+      "difficulty": 3,
+      "id": 17,
+      "question": "La Giaconda is better known as what?"
+    }
+  ],
+  "success": true,
+  "total_questions": 34
+}
+```
+
+
+#### DELETE /questions/<int:id>
+
+**In general** Return deleted item 
+**Sample:**  `curl http://127.0.0.1:5000/questions/6 -X DELETE`
+```bash
+{
+  "Deleted": 9,
+  "success": true
+}
+```
+#### POST /questions
+
+**In general**  Return true if inserted success 
+**Sample:** `curl http://127.0.0.1:5000/questions -X POST -H "Content-Type: application/json" -d '{ "question": " is this new question?", "answer": "yes", "difficulty": 1, "category": 4}'`
+
+**Sample in windows:** `curl -i -X POST -H "Content-Type: application/json" -d "{\"question\":\"is this new question?\",\"answer\":\"yes\",\"difficulty\":1,\"category\":4}" http://127.0.0.1:5000/questions`
+```bash
+{
+  "success": true
+}
 ```
 
 
