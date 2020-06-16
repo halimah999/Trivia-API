@@ -68,6 +68,14 @@ python test_flaskr.py
 ```
 *note* `createdb` and `dropdb` doesn't work on Windows directly .So rather than using `CREATE DATABASE`, and `DROP database` in `psql `command. Also this command `psql trivia_test < trivia.psql` in windows should specific owner like this  `psql -U postgres trivia < trivia.psql`
 
+## API Reference
+
+### Endpoint
+
+We have different endpoints in this project I will mention some of them  according to difference of method starting with `GET` to `POST` beside `DELETE`
+
+#### GET /categories
+
 
 
 
