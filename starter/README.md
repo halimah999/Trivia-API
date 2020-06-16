@@ -76,6 +76,25 @@ We have different endpoints in this project I will mention some of them  accordi
 
 #### GET /categories
 
+**In general** return list of categories
+
+**Sample:** `curl http://127.0.0.1:5000/categories`
+
+```bash
+{
+  "categories": {
+    "1": "Science",
+    "2": "Art",
+    "3": "Geography",
+    "4": "History",
+    "5": "Entertainment",
+    "6": "Sports"
+  },
+  "success": true:
+
+```
+
+
 
 
 
