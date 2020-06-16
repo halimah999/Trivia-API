@@ -192,6 +192,7 @@ We have different endpoints in this project I will mention some of them  accordi
 #### DELETE /questions/<int:id>
 
 **In general** Return deleted item 
+
 **Sample:**  `curl http://127.0.0.1:5000/questions/6 -X DELETE`
 ```bash
 {
@@ -202,6 +203,7 @@ We have different endpoints in this project I will mention some of them  accordi
 #### POST /questions
 
 **In general**  Return true if inserted success 
+
 **Sample:** `curl http://127.0.0.1:5000/questions -X POST -H "Content-Type: application/json" -d '{ "question": " is this new question?", "answer": "yes", "difficulty": 1, "category": 4}'`
 
 **Sample in windows:** `curl -i -X POST -H "Content-Type: application/json" -d "{\"question\":\"is this new question?\",\"answer\":\"yes\",\"difficulty\":1,\"category\":4}" http://127.0.0.1:5000/questions`
@@ -210,6 +212,18 @@ We have different endpoints in this project I will mention some of them  accordi
   "success": true
 }
 ```
+
+### Error Handling
+ erros also returned as json not  html For example as following in bad request:
+
+```bash
+{
+    "success": False,
+    "error": 400,
+    "message": "bad request"
+}
+```
+
 
 
 
