@@ -30,6 +30,19 @@ At the beginning the developer need to install different dependencies such as pi
 
 We have 2 parts of Dependencies here : 1. `Frontend Dependencies`, 2. `Backend Dependencies`
 
+### Frontend Dependencies
+
+In the frontend the react is used as framework. For run frontend should first ```install npm``` dependency.
+
+### Backend Dependencies
+
+After setup and run virtual environment, navigate to the /backend directory and Install all dependencies which found in ```requirement.txt``` by run:
+
+```bash
+pip install -r requirements.txt
+```
+
+
 
 ## Starting and Submitting the Project
 
@@ -38,7 +51,7 @@ We have 2 parts of Dependencies here : 1. `Frontend Dependencies`, 2. `Backend D
 ## About the Stack
 
 
-### Backend
+
 
 
 
