@@ -212,6 +212,108 @@ We have different endpoints in this project I will mention some of them  accordi
   "success": true
 }
 ```
+#### POST /searches
+
+**In general**  return  only questions that include the searchTerm , the list of category for these questions and total of these questions
+
+**Sample in windows:** `curl -i -X POST -H "Content-Type: application/json" -d "{\"searchTerm\":\"what\"}" http://127.0.0.1:5000/searches`
+
+```bash
+{
+  "current_category": [
+    3,
+    2,
+    1,
+    1
+  ],
+  "questions": [
+    {
+      "answer": "Lake Victoria",
+      "category": 3,
+      "difficulty": 2,
+      "id": 13,
+      "question": "What is the largest lake in Africa?"
+    },
+    {
+      "answer": "Mona Lisa",
+      "category": 2,
+      "difficulty": 3,
+      "id": 17,
+      "question": "La Giaconda is better known as what?"
+    },
+    {
+      "answer": "The Liver",
+      "category": 1,
+      "difficulty": 4,
+      "id": 20,
+      "question": "What is the heaviest organ in the human body?"
+    },
+    {
+      "answer": "Blood",
+      "category": 1,
+      "difficulty": 4,
+      "id": 22,
+      "question": "Hematology is a branch of medicine involving the study of what?"
+    }
+  ],
+  "success": true,
+  "total_questions": 4
+}
+
+```
+
+#### GET categories/<int:id>/questions
+
+**In general**  Return current category and list of questions in this category 
+
+**Sample:** `Curl http://127.0.0.1:5000/categories/4/questions`
+
+```bash
+{
+  {
+  "current_category": 4,
+  "questions": [
+    {
+      "answer": "George Washington Carver",
+      "category": 4,
+      "difficulty": 2,
+      "id": 12,
+      "question": "Who invented Peanut Butter?"
+    },
+    {
+      "answer": "Scarab",
+      "category": 4,
+      "difficulty": 4,
+      "id": 23,
+      "question": "Which dung beetle was worshipped by the ancient Egyptians?"
+    }
+  ],
+  "success": true,
+}
+
+}
+```
+
+#### POST /quizzes
+
+**In general**  return each time only one question blong to specified id of catgory and not in  previous questions
+
+**Sample :** `curl http://127.0.0.1:5000/quizzes -X POST -H "Content-Type: application/json" -d '{"previous_questions": [12,23],"quiz_category": {"id": 4,"type": "History"}}'`
+
+```bash
+{
+  "question": {
+    "answer": "yes",
+    "category": 4,
+    "difficulty": 1,
+    "id": 71,
+    "question": "is this new question?"
+  },
+  "success": true
+}
+
+```
+
 
 ### Error Handling
  erros also returned as json not  html For example as following in bad request:
@@ -223,6 +325,14 @@ We have different endpoints in this project I will mention some of them  accordi
     "message": "bad request"
 }
 ```
+
+
+The API will return diffrent types of errors:
+
+1. 400 –> bad request
+2. 404 –> resource not found
+3. 422 –> unprocessable
+4. 500 -> internal server error
 
 
 
