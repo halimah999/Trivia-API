@@ -66,14 +66,14 @@ class TriviaTestCase(unittest.TestCase):
         res = self.client().get('/questions?page=1000', json={'categories': 4})
         data = json.loads(res.data)
         # check the status and message
-        self.assertEqual(resstatus_code, 400)
+        self.assertEqual(res.status_code, 400)
         self.assertEqual(data['success'], False)
         self.assertEqual(data['message'], 'bad request')
 
     def test_delete_question(self):
         """Testing the success  of delete selected question """
         # get the response and load the data
-        res = self.client().delete('/questions/5')
+        res = self.client().delete('/questions/2')
         data = json.loads(res.data)
         # check the status and success
         self.assertEqual(res.status_code, 200)
