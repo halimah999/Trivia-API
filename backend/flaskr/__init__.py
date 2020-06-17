@@ -63,24 +63,24 @@ def create_app(test_config=None):
         '''handling GET requests for questions with  pagination (every 10 questions)'''
         # get all questions
         try:
-                questions = Question.query.order_by(Question.id).all()
-                # formatted questions as list with pagination
-                questions_formatted = paginate_questions(request, questions)
-                # get all categories
-                categories = Category.query.order_by(Category.id).all()
-                # formatted categories as dict
-                categories_formatted = {
-                    category.id: category.type for category in categories}
-                # abort if there are no retrived categories
-                if (len(questions_formatted) == 0):
-                    abort(404)
-                # return a list of questions,number of total questions, current
-                # category, categories to view
-                return jsonify({'success': True,
-                                'categories': categories_formatted,
-                                'questions': questions_formatted,
-                                'total_questions': len(questions)})
-        except:
+            questions = Question.query.order_by(Question.id).all()
+            # formatted questions as list with pagination
+            questions_formatted = paginate_questions(request, questions)
+            # get all categories
+            categories = Category.query.order_by(Category.id).all()
+            # formatted categories as dict
+            categories_formatted = {
+                category.id: category.type for category in categories}
+            # abort if there are no retrived categories
+            if (len(questions_formatted) == 0):
+                abort(404)
+            # return a list of questions,number of total questions, current
+            # category, categories to view
+            return jsonify({'success': True,
+                            'categories': categories_formatted,
+                            'questions': questions_formatted,
+                            'total_questions': len(questions)})
+        except BaseException:
             abort(400)
 
     @app.route('/questions/<int:question_id>', methods=['DELETE'])
@@ -153,7 +153,6 @@ def create_app(test_config=None):
                 abort(404)
         except BaseException:
             abort(422)
-
 
     @app.route('/categories/<int:category_id>/questions', methods=['GET'])
     def get_catogrized_question(category_id):
